@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'rango', 'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -67,10 +66,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
 ]
+
+TEMPLATES[0]['DIRS'] = [TEMPLATE_DIR]
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
@@ -124,12 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_DIR = os.path.join(BASE_DIR, 'rango', 'static')
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [STATIC_DIR]
 
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
