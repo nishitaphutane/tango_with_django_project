@@ -124,6 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
 STATIC_URL = '/static/'
 
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
@@ -133,4 +138,5 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
+LOGIN_URL = 'rango:login'
 
